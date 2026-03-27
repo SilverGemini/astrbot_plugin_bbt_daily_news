@@ -25,11 +25,7 @@ from apscheduler.schedulers.asyncio import AsyncIOScheduler
 user_agent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
 
 # API配置常量
-NEWS_API_URL = "https://60s-api.viki.moe/v2/60s"
-ITHOME_RANK_URL = "https://www.ithome.com/block/rank.html"
-DRAM_PRICE_URL = "https://www.dramx.com/Price/DSD.html"
 BANGUMI_CALENDAR_URL = "https://bgm.tv/calendar"
-DOUBAN_MOVIE_URL = "https://movie.douban.com/cinema/later/beijing/"
 DMM_RANKING_URL = "https://www.dmm.co.jp/digital/videoa/-/ranking/=/term=daily/"
 
 @dataclass
