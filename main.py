@@ -307,7 +307,9 @@ class DailyReportPlugin(Star):
                     return_exceptions=True
                 )
                 dmm_top_list = dmm_results[0] if not isinstance(dmm_results[0], Exception) else []
+                
 
+        show_adult = "1" if self.r18_mode else "0"
         # 整理常规数据
         context_data = {
             "r18_mode": show_adult,
