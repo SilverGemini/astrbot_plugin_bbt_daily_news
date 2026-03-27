@@ -121,27 +121,6 @@
             overflow: hidden;
             text-overflow: ellipsis;
         }
-        /* 电影卡片特有样式 */
-        .movie-date {
-            position: absolute;
-            top: 5px;
-            right: 5px;
-            background: rgba(0,0,0,0.7);
-            color: white;
-            font-size: 10px;
-            padding: 2px 6px;
-            border-radius: 4px;
-        }
-        .movie-type {
-            font-size: 10px;
-            color: #999;
-            margin-top: -5px;
-            margin-bottom: 5px;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            padding: 0 5px;
-        }
         /* 游戏平台标签样式 */
         .game-platforms {
             font-size: 10px;
@@ -165,154 +144,8 @@
 <body>
     <div class="container">
         <div class="header">
-            <h1>棒棒糖的每日早报</h1>
+            <h1>ACG晚报</h1>
             <p>{{ date }}</p>
-        </div>
-        {% if exchange_rates.error %}
-        {% else %}
-        <div class="section" style="background: #fff8e1; border-color: #ffe082;">
-            <div class="section-title" style="color: #f57f17;">
-                <span style="margin-right: 5px;">💰</span> Exchange汇率速递 (1 人民币 兑换)
-            </div>
-            <div style="display: flex; justify-content: space-between; text-align: center; font-size: 14px;">
-                <div>
-                    <div style="font-size: 20px;">🇺🇸</div>
-                    <div style="font-weight: bold; color: #333;">{{ exchange_rates.USD }}</div>
-                    <div style="font-size: 12px; color: #888;">美元</div>
-                </div>
-                <div>
-                    <div style="font-size: 20px;">🇯🇵</div>
-                    <div style="font-weight: bold; color: #333;">{{ exchange_rates.JPY }}</div>
-                    <div style="font-size: 12px; color: #888;">日元</div>
-                </div>
-                <div>
-                    <div style="font-size: 20px;">🇨🇳</div>
-                    <div style="font-weight: bold; color: #333;">{{ exchange_rates.TWD }}</div>
-                    <div style="font-size: 12px; color: #888;">新台币</div>
-                </div>
-                <div>
-                    <div style="font-size: 20px;">🇭🇰</div>
-                    <div style="font-weight: bold; color: #333;">{{ exchange_rates.HKD }}</div>
-                    <div style="font-size: 12px; color: #888;">港币</div>
-                </div>
-                <div>
-                    <div style="font-size: 20px;">🇪🇺</div>
-                    <div style="font-weight: bold; color: #333;">{{ exchange_rates.EUR }}</div>
-                    <div style="font-size: 12px; color: #888;">欧元</div>
-                </div>
-                <div>
-                    <div style="font-size: 20px;">🇬🇧</div>
-                    <div style="font-weight: bold; color: #333;">{{ exchange_rates.GBP }}</div>
-                    <div style="font-size: 12px; color: #888;">英镑</div>
-                </div>
-            </div>
-        </div>
-        {% endif %}
-        <div class="section">
-            <div class="section-title">60秒速读世界</div>
-            <ul>
-                {% for news in news_60s %}
-                <li>{{ news }}</li>
-                {% endfor %}
-            </ul>
-        </div>
-
-		<div class="section">
-            <div class="row-container">
-                {% if weibo_hot %}
-                <div class="api-card" style="background: #f8f9fa; padding: 10px; border-radius: 4px;">
-                    <div class="col-half">
-                        <div class="section-title">微博热榜</div>
-                        <ul>
-                            {% for news in weibo_hot %}
-                            <li>{{ news }}</li>
-                            {% endfor %}
-                        </ul>
-                    </div>
-                </div>
-                {% if toutiao_hot %}
-                {% endif %}
-                <div class="api-card" style="background: #f8f9fa; padding: 10px; border-radius: 4px;">
-                    <div class="col-half">
-                        <div class="section-title">今日头条热榜</div>
-                        <ul>
-                            {% for news in toutiao_hot %}
-                            <li>{{ news }}</li>
-                            {% endfor %}
-                        </ul>
-                    </div>
-                </div>
-                {% endif %}
-            </div>
-        </div>
-
-        <div class="section">
-            <div class="section-title">IT之家热榜</div>
-            <ul>
-                {% for item in news_ithome %}
-                <li>{{ item }}</li>
-                {% endfor %}
-            </ul>
-        </div>
-
-        {% if not ai_balances.OpenRouter.error
-        and
-        not ai_balances.DeepSeek.error
-        and
-        not ai_balances.MoonShot.error
-        and
-        not ai_balances.SiliconFlow.error %}
-        <div class="section">
-            <div class="section-title">AI API 额度监控</div>
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
-                {% if not ai_balances.OpenRouter.error %}
-                <div class="api-card" style="background: #f8f9fa; padding: 10px; border-radius: 8px;">
-                    <div style="font-weight: bold; color: #333;">OpenRouter</div>
-                    <div style="font-size: 12px; color: #666; margin-top: 5px;">
-                        <span>每日用量: <b>{{ ai_balances.OpenRouter.usage_daily }}</b></span><br>
-                        <span>剩余限额: <b style="color: #28a745;">{{ ai_balances.OpenRouter.limit_remaining }}</b></span>
-                    </div>
-                </div>
-                {% endif %}
-                {% if not ai_balances.DeepSeek.error %}
-                <div class="api-card" style="background: #f8f9fa; padding: 10px; border-radius: 8px;">
-                    <div style="font-weight: bold; color: #333;">DeepSeek</div>
-                    <div style="font-size: 12px; color: #666; margin-top: 5px;">
-                        <span>剩余限额: <b style="color: #28a745;">{{ ai_balances.DeepSeek.balance }}</b></span>
-                    </div>
-                </div>
-                {% endif %}
-                {% if not ai_balances.MoonShot.error %}
-                <div class="api-card" style="background: #f8f9fa; padding: 10px; border-radius: 8px;">
-                    <div style="font-weight: bold; color: #333;">MoonShot</div>
-                    <div style="font-size: 12px; color: #666; margin-top: 5px;">
-                        <span>剩余限额: <b style="color: #28a745;">{{ ai_balances.MoonShot.balance }}</b></span>
-                    </div>
-                </div>
-                {% endif %}
-                {% if not ai_balances.SiliconFlow.error %}
-                <div class="api-card" style="background: #f8f9fa; padding: 10px; border-radius: 8px;">
-                    <div style="font-weight: bold; color: #333;">SiliconFlow</div>
-                    <div style="font-size: 12px; color: #666; margin-top: 5px;">
-                        <span>剩余限额: <b style="color: #28a745;">{{ ai_balances.SiliconFlow.balance }}</b></span>
-                    </div>
-                </div>
-                {% endif %}
-            </div>
-        </div>
-        {% endif %}
-        <div class="section">
-            <div class="section-title">国际 DRAM 价格</div>
-            <table style="width: 100%; font-size: 13px; text-align: left;">
-                <tr style="color: #999;"><th>产品</th><th>价格（美元）</th><th>涨幅</th></tr>
-                {% for item in dram_prices %}
-                <tr>
-                    <td>{{ item.name }}</td>
-                    <td>{{ item.price }}</td>
-                    <td class="{{ 'price-up' if '+' in item.change else 'price-down' }}">{{ item.change }}</td>
-                </tr>
-                {% endfor %}
-            </table>
         </div>
         {% if game_list %}
         <div class="section">
@@ -347,24 +180,6 @@
                             <img src="{{ anime.cover }}" onerror="this.src='https://bgm.tv/img/no_icon_subject.png'">
                         </div>
                         <div class="anime-title">{{ anime.title }}</div>
-                    </div>
-                    {% endfor %}
-                </div>
-            {% endif %}
-        </div>
-        <div class="section">
-            <div class="section-title">近期上映电影 (豆瓣)</div>
-            {% if not movie_list %}
-                <p style="color:#999; font-size:12px;">获取失败或近期无新片</p>
-            {% else %}
-                <div class="anime-grid"> {% for movie in movie_list %}
-                    <div class="anime-card">
-                        <div class="anime-cover-box">
-                            <img src="{{ movie.cover }}" onerror="this.src='https://bgm.tv/img/no_icon_subject.png'">
-                            <div class="movie-date">{{ movie.date }}</div>
-                        </div>
-                        <div class="anime-title">{{ movie.title }}</div>
-                        <div class="movie-type">{{ movie.type }}</div>
                     </div>
                     {% endfor %}
                 </div>
