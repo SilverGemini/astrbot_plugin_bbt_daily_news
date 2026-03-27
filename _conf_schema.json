@@ -11,42 +11,6 @@
     "hint": "填写推送的时间，格式为 HH:MM，如: 08:00, 12:30, 18:00",
     "default": "08:00"
   },
-  "openrouter_key": {
-    "description": "OpenRouter API密钥",
-    "type": "string",
-    "hint": "从 https://openrouter.ai/ 获取API密钥",
-    "default": ""
-  },
-  "deepseek_key": {
-    "description": "DeepSeek API密钥",
-    "type": "string",
-    "hint": "从 https://platform.deepseek.com/ 获取API密钥",
-    "default": ""
-  },
-  "moonshot_key": {
-    "description": "Moonshot (Kimi) API密钥",
-    "type": "string",
-    "hint": "从 https://platform.moonshot.cn/ 获取API密钥",
-    "default": ""
-  },
-  "siliconflow_key": {
-    "description": "硅基流动 (SiliconFlow) API密钥",
-    "type": "string",
-    "hint": "从 https://siliconflow.cn/ 获取API密钥",
-    "default": ""
-  },
-  "yuafeng_key": {
-    "description": "Yuafeng API密钥",
-    "type": "string",
-    "hint": "从 https://api-v2.yuafeng.cn/ 获取API密钥，用于获取微博/今日头条热榜",
-    "default": ""
-  },
-  "exchangerate_key":{
-    "description": "ExchangeRate-API 汇率查询KEY",
-    "type": "string",
-    "hint": "从 https://www.exchangerate-api.com/ 获取API密钥",
-    "default": ""
-  },
   "rawg_key":{
     "description": "RAWG API密钥",
     "type": "string",
